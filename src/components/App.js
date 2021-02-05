@@ -1,15 +1,23 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
+import Modalka from './Modalka';
+import '../index.scss';
 
-import '../styles/App.css';
+const App = () => {
+  const [loading, setLoading] = useState(false);
 
-class App extends Component {
-    render() {
-        return (
-            <div>
-                <h1>My React App!</h1>
-            </div>
-        );
-    }
-}
+  const handleClick = () => {
+    return setLoading(true);
+  };
+  
+  return (
+    <div className='App'>
+      <button className="App__button button" onClick={handleClick}>Открыть модалку</button>
+      {loading
+        ? <Modalka setLoading={setLoading} />
+        : ''
+      }
+    </div>
+  );
+};
 
 export default App;
